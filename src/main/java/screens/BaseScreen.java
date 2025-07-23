@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public abstract class BaseScreen {
-    static AppiumDriver driver;
+    protected static AppiumDriver driver;
 
     public BaseScreen(AppiumDriver driver) {
         this.driver = driver;
@@ -27,6 +27,7 @@ public abstract class BaseScreen {
     }
 
     public boolean textInElementPresent(WebElement element, String text, int time) {
-        return new WebDriverWait(driver, Duration.ofSeconds(time)).until(ExpectedConditions.textToBePresentInElement(element, text));
+        return new WebDriverWait(driver, Duration.ofSeconds(time))
+                .until(ExpectedConditions.textToBePresentInElement(element, text));
     }
 }
