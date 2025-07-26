@@ -24,4 +24,10 @@ public class AuthenticationScreen extends BaseScreen {
         inputPassword.sendKeys(user.getPassword());
         btnRegistration.click();
     }
+
+    public void typeLoginFrom(User user){
+        inputEmail.sendKeys(user.getUsername());
+        inputPassword.sendKeys(user.getPassword());
+        btnLogin.click();
+    }
 }
