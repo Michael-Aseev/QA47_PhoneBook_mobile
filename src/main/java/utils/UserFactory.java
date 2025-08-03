@@ -2,7 +2,7 @@ package utils;
 
 import dto.User;
 import static utils.RandomUtils.*;
-public class UserFabric {
+public class UserFactory {
     public static User createUser(){
         return User.builder()
                 .username(generateEmail(15))

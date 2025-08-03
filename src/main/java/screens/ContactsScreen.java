@@ -3,6 +3,7 @@ package screens;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
@@ -53,6 +54,16 @@ public class ContactsScreen extends  BaseScreen{
 
     public void clickToLastContact(){
         listContact.get(listContact.size()-1).click();
+    }
+
+    public void swipeRightToLeft(){
+        int width = driver.manage().window().getSize().getWidth();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(listContact.get(0), -width/100*48, 0)
+                .clickAndHold()
+                .moveToElement(listContact.get(0), width/100*48, 0)
+                .release()
+                .perform();
     }
 
     public EditContactScreen swipeLeftToRight(){

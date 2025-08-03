@@ -1,6 +1,5 @@
 package api_okhttp_test;
 
-import com.google.gson.Gson;
 import dto.ContactsDto;
 import dto.ErrorMessageDto;
 import dto.TokenDto;
@@ -18,6 +17,7 @@ import static api_okhttp.GetAllUserContacts.*;
 import static api_okhttp.DeleteContactById.*;
 
 public class DeleteContactByIdTests {
+
     User qa_user = User.builder()
             .username("qa_user_qwerty@mail.com")
             .password("Password123!")
@@ -26,9 +26,9 @@ public class DeleteContactByIdTests {
     TokenDto tokenDto;
 
     @BeforeMethod
-    public void loginGetAllContact() throws IOException{
+    public void loginGetAllContact() throws IOException {
         Response response = login(qa_user);
-        tokenDto = GSON.fromJson(response.body().string(),TokenDto.class);
+        tokenDto = GSON.fromJson(response.body().string(), TokenDto.class);
         Response response1 = getAllUserContacts(tokenDto);
         contactsDto = GSON.fromJson(response1.body().string(), ContactsDto.class);
     }
@@ -36,8 +36,8 @@ public class DeleteContactByIdTests {
     @Test
     public void deleteContactPositiveTest() {
         String id = contactsDto.getContacts()[0].getId();
-        Response response = deleteContactById(tokenDto,id);
-        Assert.assertEquals(response.code(),200);
+        Response response = deleteContactById(tokenDto, id);
+        Assert.assertEquals(response.code(), 200);
     }
 
     @Test
@@ -50,14 +50,17 @@ public class DeleteContactByIdTests {
     }
 
     @Test
-    public void deleteContactNegativeTest_wrongId() throws  IOException {
-        String id = "";
+    public void deleteContactNegativeTest_wrongId() throws IOException {
+        String id = "1";
         Response response = deleteContactById(tokenDto, id);
         System.out.println(response.message());
+        System.out.println(response.code());
         if (response.code() == 400) {
+            System.out.println(response.body().contentLength());
             ErrorMessageDto errorMessageDto =
                     GSON.fromJson(response.body().string(), ErrorMessageDto.class);
-            System.out.println(errorMessageDto.toString());
+            System.out.println(errorMessageDto.getMessage().toString());
+            Assert.assertTrue(errorMessageDto.getMessage().toString().contains("not found in your contacts!"));
         }
     }
 }

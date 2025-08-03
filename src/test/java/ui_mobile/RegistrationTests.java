@@ -9,7 +9,7 @@ import screens.ContactsScreen;
 import screens.ErrorScreen;
 import screens.SplashScreen;
 
-import static utils.UserFabric.*;
+import static utils.UserFactory.*;
 
 public class RegistrationTests extends AppiumConfig {
 

@@ -10,8 +10,8 @@ public class DeleteContactTest extends AppiumConfig {
     ContactsScreen contactsScreen;
 
     User qa_user = User.builder()
-            .username("")
-            .password("")
+            .username("studiesaseev27@gmail.com")
+            .password("Ecbdn300396$")
             .build();
 
     @BeforeMethod
@@ -24,7 +24,7 @@ public class DeleteContactTest extends AppiumConfig {
     @Test
     public void deleteContactTest(){
 
-        contactsScreen.swipeLeftToRight();
+        contactsScreen.swipeRightToLeft();
         contactsScreen.clickBtnYes();
     }
 }
