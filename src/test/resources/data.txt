@@ -1,0 +1,6 @@
+{
+"username": "studiesaseev27@gmail.com" ,
+"password": "Ecbdn300396$"
+}
+
+"token": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX1VTRVIiXSwic3ViIjoic3R1ZGllc2FzZWV2MjdAZ21haWwuY29tIiwiaXNzIjoiUmVndWxhaXQiLCJleHAiOjE3NTUwMTM0ODEsImlhdCI6MTc1NDQxMzQ4MX0.mTPsriICnDy8AR1GDIASFJ7vUR2Lo7GEAPaWAVOsynI"

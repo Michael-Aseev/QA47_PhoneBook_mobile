@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import screens.AuthenticationScreen;
 import screens.ContactsScreen;
+import screens.ErrorScreen;
 import screens.SplashScreen;
 
 import java.util.Arrays;
@@ -32,6 +33,7 @@ public class EditContactTests extends AppiumConfig {
                 .typeLoginFrom(qa_user);
         contactsScreen = new ContactsScreen(driver);
     }
+
     @Test
     public void editContactPositiveTest(){
         Contact contact = createPositiveContact();
@@ -46,5 +48,23 @@ public class EditContactTests extends AppiumConfig {
             }
         }
         Assert.assertTrue(flag);
+    }
+
+    @Test
+    public void editContactPositiveTest_validateMessage(){
+        Contact contact = createPositiveContact();
+        contactsScreen.swipeLeftToRight()
+                .editContact(contact)
+        ;
+        Assert.assertTrue(contactsScreen.validateMessageSuccess("Contact was updated"));
+    }
+
+    @Test
+    public void editContactNegativeTest_wrongPhone(){
+        Contact contact = createNegativeContact_WrongPhone("qqqqqqqqqqqqqqqqq");
+        contactsScreen.swipeLeftToRight()
+                .editContact(contact)
+        ;
+        Assert.assertTrue(new ErrorScreen(driver).validateErrorMessage("Phone number must contain"));
     }
 }

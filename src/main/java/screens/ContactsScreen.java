@@ -24,12 +24,27 @@ public class ContactsScreen extends  BaseScreen{
     @FindBy(xpath = "//*[@text = 'YES']")
     WebElement btnYes;
 
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc='More options']")
+    WebElement btnMoreOptions;
+
+    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/title' and @text='Date picker']")
+    WebElement btnDatePicker;
+
     public boolean validateContactsScreenOpen(String text){
         return textInElementPresent(textContactList, text, 10);
     }
 
     public void clickBtnPlus(){
         btnAddNewContactPlus.click();
+    }
+
+    public void clickBtnMoreOptions(){
+        btnMoreOptions.click();
+    }
+
+    public DatePickerScreen clickBtnDatePicker(){
+        btnDatePicker.click();
+        return new DatePickerScreen(driver);
     }
 
     public void scrollToLastContact(){
