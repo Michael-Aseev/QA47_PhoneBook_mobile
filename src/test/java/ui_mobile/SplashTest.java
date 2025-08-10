@@ -6,7 +6,8 @@ import org.testng.annotations.Test;
 import screens.SplashScreen;
 
 public class SplashTest extends AppiumConfig {
-    @Test
+
+    @Test(groups = "smoke")
     public void splashTest(){
         Assert.assertTrue(new SplashScreen(driver)
                 .validateVersionApp("Version 1.0.0"));

@@ -2,10 +2,12 @@ package ui_mobile;
 
 import config.AppiumConfig;
 import dto.User;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import screens.*;
 
+@Slf4j
 public class DatePickerTests extends AppiumConfig {
 
     ContactsScreen contactsScreen;
@@ -24,7 +26,10 @@ public class DatePickerTests extends AppiumConfig {
     public void datePickerPositiveTest(){
         contactsScreen.clickBtnMoreOptions();
         contactsScreen.clickBtnDatePicker()
-                .clickBtnChangeDate();
+                .clickBtnChangeDate()
+                .typeDate("10 December 2026")
+                .validateDate("10 December 2026")
+
         ;
     }
 }

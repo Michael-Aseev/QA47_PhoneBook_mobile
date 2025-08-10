@@ -28,3 +28,12 @@ dependencies {
 test {
     useTestNG()
 }
+
+task smokeTests(type: Test){
+    useTestNG(){
+        if (project.hasProperty('device')){
+            systemProperty 'device' , "${device}"
+        }
+        suites 'src/test/resources/smokeTests.xml'
+    }
+}

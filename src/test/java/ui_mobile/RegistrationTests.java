@@ -15,12 +15,12 @@ public class RegistrationTests extends AppiumConfig {
 
     AuthenticationScreen authenticationScreen;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void goToAuthScreen(){
         new SplashScreen(driver);
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void registrationPositiveTest(){
         authenticationScreen = new AuthenticationScreen(driver);
         authenticationScreen.typeRegistrationFrom(createUser());
